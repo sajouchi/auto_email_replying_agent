@@ -1,0 +1,35 @@
+name: Email Agent
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create token.json
+        run: echo '${{ secrets.GMAIL_TOKEN }}' > token.json
+
+      - name: Create credentials.json
+        run: echo '${{ secrets.GMAIL_CREDENTIALS }}' > credentials.json
+
+      - name: Run Agent
+        env:
+          model_token: ${{ secrets.MODEL_TOKEN }}
+          resend_api_key: ${{ secrets.RESEND_API_KEY }}
+          bot_token: ${{ secrets.BOT_TOKEN }}
+          my_chat_id: ${{ secrets.MY_CHAT_ID }}
+
+        run: python agent_script_final.py
