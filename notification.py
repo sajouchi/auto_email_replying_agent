@@ -23,7 +23,7 @@ class TelegramBot:
     def __init__(self):
 
         self.bot_token = os.getenv("bot_token")
-        self.chat_id = os.getenv("chat_id")
+        self.chat_id = os.getenv("my_chat_id")
 
         self.user_response = None
         self.response_event = asyncio.Event()

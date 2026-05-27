@@ -9,7 +9,7 @@ from notification import TelegramBot
 from dotenv import load_dotenv
 load_dotenv()
 
-os.environ['OPENAI_API_KEY'] = os.getenv('github_token') # setting up model api key
+os.environ['OPENAI_API_KEY'] = os.getenv('model_token') # setting up model api key
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s - %(levelname)s - %(message)s")
