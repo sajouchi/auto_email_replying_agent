@@ -3,6 +3,8 @@ name: Email Agent
 on:
   workflow_dispatch:
 
+  #schedule:
+  #- cron: "*/3  * * *" # every 3 hours
 jobs:
   run-agent:
     runs-on: ubuntu-latest
